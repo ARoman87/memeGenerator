@@ -54,3 +54,18 @@
 .memeButton button:hover {
   cursor: pointer;
 }
+
+.memeImageContainer {
+  width: 75%;
+  height: 500px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.memeImageContainer img {
+  min-width: auto;
+  max-height: 500px;
+}
