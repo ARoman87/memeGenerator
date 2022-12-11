@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   background: linear-gradient(90deg, #672280, #A626D3);
-  height: 150px;
+  height: 100px;
   color: white;
   font-size: 46px;
   font-family: "Karla";
@@ -23,14 +23,13 @@
   height: 150px;
   width: 80%;
   align-items: center;
-  margin: 0 auto;
+  margin: -20px auto;
 }
 
 .inputs input {
   height: 40px;
   width: 40%;
   border-radius: 5px;
-  margin-top: 50px;
   border-color: #D5D4D8;
   font-size: 26px;
   text-indent: 5px;
@@ -58,7 +57,7 @@
 .memeImageContainer {
   width: 75%;
   height: 500px;
-  margin: 20px auto;
+  margin: 25px auto;
   display: flex;
   justify-content: center;
   align-items: center;

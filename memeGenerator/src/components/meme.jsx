@@ -1,28 +1,30 @@
-import memesData from "../memesData"
 import React from "react"
 
 function Meme() {
-    //const [memeImage, setMemeImage] = React.useState("http://i.imgflip.com/1bij.jpg")
     const [meme, setMeme] = React.useState({
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg",
     })
 
-    const [allMemesImages, setAllMemesImages] = React.useState(memesData)
+    const [allMemesImages, setAllMemesImages] = React.useState([])
 
-    console.log(meme)
 
     function getMemeImage() {
-        const memesArray = allMemesImages.data.memes 
-        const randomNumber = Math.floor(Math.random() * memesArray.length)
-        const url = memesArray[randomNumber].url
+        const randomNumber = Math.floor(Math.random() * allMemesImages.length)
+        const url = allMemesImages[randomNumber].url
         setMeme(prevMeme => ({
             ...prevMeme,
             randomImage: url
     
         }))
     }
+    
+    React.useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setAllMemesImages(data.data.memes))
+    }, [])
 
     function handleChange(event) {
         const {name, value} = event.target
@@ -34,16 +36,10 @@ function Meme() {
 
 
 
-    function handSubmit(event) {
-        event.preventDefault()
-
-    }
-
-
 
     return (
         <div>
-            <form onSubmit={handSubmit}>
+            
                 <div className="inputs">
 
                     <input 
@@ -67,7 +63,7 @@ function Meme() {
                 <div className="memeButton">
                     <button onClick={getMemeImage}>Get a new meme image 🖼️</button>
                 </div>
-            </form>
+            
 
             <div className="memeImageContainer">
                 <img src={meme.randomImage} alt="" />
